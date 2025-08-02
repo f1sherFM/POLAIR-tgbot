@@ -1,3 +1,4 @@
+import os
 import logging
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
@@ -9,6 +10,10 @@ from telegram.ext import (
     filters
 )
 import psycopg2
+from psycopg2 import pool
+
+from dotenv import load_dotenv
+load_dotenv()  # Загружает переменные из .env файла
 
 # Настройка логирования
 logging.basicConfig(
@@ -18,8 +23,8 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Конфигурация бота
-TOKEN = "7382727613:AAG7_S2GFaNIv6czqj6vJrS1EGVsSFS0WkM"
-ADMIN_ID = "@Soffya82"  # Обязательно с @ в начале для username
+TOKEN = os.getenv("TELEGRAM_TOKEN", "7382727613:AAG7_S2GFaNIv6czqj6vJrS1EGVsSFS0WkM")
+ADMIN_ID = os.getenv("ADMIN_ID", "@Soffya82") # Обязательно с @ в начале для username
 
 # Проверка формата ADMIN_ID
 if not ADMIN_ID:
@@ -265,28 +270,39 @@ CATALOG = {
 
 class Database:
     def __init__(self):
-        self.conn = None
+        self.conn_pool = None
         self.connect()
 
     def connect(self):
-        """Устанавливает соединение с базой данных"""
+    # Устанавливает соединение с базой данных через пул соединений
         try:
-            self.conn = psycopg2.connect(
-                dbname="polair_bot",
-                user="postgres",
-                password="1234",
-                host="localhost",
-                port="5432"
+            # Получаем параметры подключения из переменных окружения
+            db_host = os.getenv('DB_HOST', 'localhost')
+            db_name = os.getenv('DB_NAME', 'polair_bot')
+            db_user = os.getenv('DB_USER', 'postgres')
+            db_password = os.getenv('DB_PASSWORD', '1234')
+            db_port = os.getenv('DB_PORT', '5432')
+            
+            # Формируем строку подключения
+            dsn = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
+            
+            self.conn_pool = pool.SimpleConnectionPool(
+                minconn=1,
+                maxconn=5,
+                dsn=dsn
             )
             logger.info("Успешное подключение к базе данных")
             self.create_tables()
         except Exception as e:
             logger.error(f"Ошибка подключения к базе данных: {e}")
+            raise
 
     def create_tables(self):
         """Создает необходимые таблицы в базе данных"""
+        conn = None
         try:
-            with self.conn.cursor() as cursor:
+            conn = self.conn_pool.getconn()
+            with conn.cursor() as cursor:
                 cursor.execute("""
                     CREATE TABLE IF NOT EXISTS reviews (
                         id SERIAL PRIMARY KEY,
@@ -297,32 +313,45 @@ class Database:
                         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                     )
                 """)
-                self.conn.commit()
-                logger.info("Таблица отзывов создана")
+                conn.commit()
+                logger.info("Таблица отзывов создана или уже существует")
         except Exception as e:
             logger.error(f"Ошибка при создании таблиц: {e}")
+            if conn:
+                conn.rollback()
+        finally:
+            if conn:
+                self.conn_pool.putconn(conn)
 
     def add_review(self, user_id, username, first_name, review_text):
         """Добавляет отзыв в базу данных"""
+        conn = None
         try:
-            with self.conn.cursor() as cursor:
+            conn = self.conn_pool.getconn()
+            with conn.cursor() as cursor:
                 cursor.execute("""
                     INSERT INTO reviews (user_id, username, first_name, review_text)
                     VALUES (%s, %s, %s, %s)
                     RETURNING id
                 """, (user_id, username, first_name, review_text))
                 review_id = cursor.fetchone()[0]
-                self.conn.commit()
+                conn.commit()
                 return review_id
         except Exception as e:
             logger.error(f"Ошибка при добавлении отзыва: {e}")
-            self.conn.rollback()
+            if conn:
+                conn.rollback()
             return None
+        finally:
+            if conn:
+                self.conn_pool.putconn(conn)
 
     def get_recent_reviews(self, limit=5):
         """Получает последние отзывы из базы данных"""
+        conn = None
         try:
-            with self.conn.cursor() as cursor:
+            conn = self.conn_pool.getconn()
+            with conn.cursor() as cursor:
                 cursor.execute("""
                     SELECT username, first_name, review_text, created_at
                     FROM reviews
@@ -333,11 +362,14 @@ class Database:
         except Exception as e:
             logger.error(f"Ошибка при получении отзывов: {e}")
             return []
+        finally:
+            if conn:
+                self.conn_pool.putconn(conn)
 
     def close(self):
         """Закрывает соединение с базой данных"""
-        if self.conn:
-            self.conn.close()
+        if self.conn_pool:
+            self.conn_pool.closeall()
             logger.info("Соединение с базой данных закрыто")
 
 # Создаем глобальный экземпляр базы данных
