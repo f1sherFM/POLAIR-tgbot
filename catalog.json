@@ -1,0 +1,237 @@
+{
+  "winter": {
+    "name": "Зима",
+    "items": [
+      {
+        "name": "Женские зимние пуховики",
+        "color": "Черный",
+        "link": "https://www.wildberries.ru/catalog/175873915/detail.aspx"
+      },
+      {
+        "name": "Женские зимние пуховики",
+        "color": "Оливковый",
+        "link": "https://www.wildberries.ru/catalog/253587201/detail.aspx"
+      },
+      {
+        "name": "Женские зимние пуховики",
+        "color": "Голубой",
+        "link": "https://www.wildberries.ru/catalog/253587199/detail.aspx"
+      },
+      {
+        "name": "Женские зимние пуховики",
+        "color": "Фиолетовый",
+        "link": "https://www.wildberries.ru/catalog/253587202/detail.aspx"
+      },
+      {
+        "name": "Женские зимние пуховики",
+        "color": "Баклажан",
+        "link": "https://www.wildberries.ru/catalog/253587197/detail.aspx"
+      },
+      {
+        "name": "Женские зимние пуховики",
+        "color": "Бордо",
+        "link": "https://www.wildberries.ru/catalog/453814195/detail.aspx"
+      },
+      {
+        "name": "Женские зимние пуховики",
+        "color": "Фукси",
+        "link": "https://www.wildberries.ru/catalog/449566294/detail.aspx"
+      },
+      {
+        "name": "Женские зимние пуховики",
+        "color": "Бежевый",
+        "link": "https://www.wildberries.ru/catalog/253587198/detail.aspx"
+      },
+      {
+        "name": "Женские зимние пуховики с поясом",
+        "color": "Черный",
+        "link": "https://www.wildberries.ru/catalog/458138806/detail.aspx"
+      },
+      {
+        "name": "Женские зимние пуховики с поясом",
+        "color": "Бирюзовый",
+        "link": "https://www.wildberries.ru/catalog/458138809/detail.aspx"
+      },
+      {
+        "name": "Женские зимние пуховики с поясом",
+        "color": "Хаки",
+        "link": "https://www.wildberries.ru/catalog/458138808/detail.aspx"
+      },
+      {
+        "name": "Мужские парки",
+        "color": "Черный",
+        "link": "https://www.wildberries.ru/catalog/242081084/detail.aspx"
+      },
+      {
+        "name": "Мужские парки",
+        "color": "Белый",
+        "link": "https://www.wildberries.ru/catalog/242081085/detail.aspx"
+      },
+      {
+        "name": "Мужские парки",
+        "color": "Хаки",
+        "link": "https://www.wildberries.ru/catalog/451533759/detail.aspx"
+      },
+      {
+        "name": "Мужские парки",
+        "color": "Бежевый",
+        "link": "https://www.wildberries.ru/catalog/242081083/detail.aspx"
+      },
+      {
+        "name": "Мужские пуховики",
+        "color": "Черный",
+        "link": "https://www.wildberries.ru/catalog/175549540/detail.aspx"
+      },
+      {
+        "name": "Мужские пуховики",
+        "color": "Черный с коричневым",
+        "link": "https://www.wildberries.ru/catalog/175814955/detail.aspx"
+      },
+      {
+        "name": "Варежки зимние",
+        "color": "",
+        "link": "https://seller.wildberries.ru/new-goods/all-goods"
+      }
+    ]
+  },
+  "spring": {
+    "name": "Весна/Осень",
+    "items": [
+      {
+        "name": "Куртка на осень короткая оверсайз",
+        "color": "Синяя",
+        "link": "https://www.wildberries.ru/catalog/314963480/detail.aspx"
+      },
+      {
+        "name": "Куртка на осень короткая оверсайз",
+        "color": "Графит",
+        "link": "https://www.wildberries.ru/catalog/325699105/detail.aspx"
+      },
+      {
+        "name": "Куртка на осень короткая оверсайз",
+        "color": "Мята",
+        "link": "https://www.wildberries.ru/catalog/314963481/detail.aspx"
+      },
+      {
+        "name": "Куртка на осень короткая оверсайз",
+        "color": "Жемчужный",
+        "link": "https://www.wildberries.ru/catalog/314963482/detail.aspx"
+      },
+      {
+        "name": "Куртка на осень короткая оверсайз",
+        "color": "Черный",
+        "link": "https://www.wildberries.ru/catalog/314963477/detail.aspx"
+      },
+      {
+        "name": "Куртка на осень короткая оверсайз",
+        "color": "Оливковый",
+        "link": "https://www.wildberries.ru/catalog/314963479/detail.aspx"
+      },
+      {
+        "name": "Куртка на осень с капюшоном",
+        "color": "Черная",
+        "link": "https://www.wildberries.ru/catalog/314958189/detail.aspx"
+      },
+      {
+        "name": "Куртка на осень с капюшоном",
+        "color": "Голубая",
+        "link": "https://www.wildberries.ru/catalog/314958190/detail.aspx"
+      },
+      {
+        "name": "Куртка на осень с капюшоном",
+        "color": "Серая",
+        "link": "https://www.wildberries.ru/catalog/314958188/detail.aspx"
+      },
+      {
+        "name": "Куртка на осень с капюшоном",
+        "color": "Бежевая",
+        "link": "https://www.wildberries.ru/catalog/314958191/detail.aspx"
+      },
+      {
+        "name": "Куртка на осень с капюшоном",
+        "color": "Красная",
+        "link": "https://www.wildberries.ru/catalog/320369447/detail.aspx"
+      },
+      {
+        "name": "Куртка на осень с капюшоном",
+        "color": "Темно-синяя",
+        "link": "https://www.wildberries.ru/catalog/320369449/detail.aspx"
+      },
+      {
+        "name": "Тестовый товар",
+        "color": "Черный",
+        "link": "-"
+      }
+    ]
+  },
+  "summer": {
+    "name": "Лето",
+    "items": [
+      {
+        "name": "Платье летнее нарядное длинное",
+        "color": "Светлое",
+        "link": "https://www.wildberries.ru/catalog/370795701/detail.aspx"
+      },
+      {
+        "name": "Платье летнее нарядное длинное",
+        "color": "Темное",
+        "link": "https://www.wildberries.ru/catalog/370795702/detail.aspx"
+      },
+      {
+        "name": "Платье сарафан летнее крестьянка",
+        "color": "Мини",
+        "link": "https://www.wildberries.ru/catalog/370752622/detail.aspx"
+      },
+      {
+        "name": "Платье летнее короткое с воротником",
+        "color": "Светлое",
+        "link": "https://www.wildberries.ru/catalog/370747437/detail.aspx"
+      },
+      {
+        "name": "Платье летнее короткое с воротником",
+        "color": "Темное",
+        "link": "https://www.wildberries.ru/catalog/370747436/detail.aspx"
+      },
+      {
+        "name": "Платье летнее длинное льняное",
+        "color": "Черное",
+        "link": "https://www.wildberries.ru/catalog/368572748/detail.aspx"
+      },
+      {
+        "name": "Платье летнее длинное льняное",
+        "color": "Кремовое",
+        "link": "https://www.wildberries.ru/catalog/368572749/detail.aspx"
+      },
+      {
+        "name": "Платье летнее длинное льняное",
+        "color": "Хаки",
+        "link": "https://www.wildberries.ru/catalog/368572750/detail.aspx"
+      }
+    ]
+  },
+  "sweatshirts": {
+    "name": "Свитшоты",
+    "items": [
+      {
+        "name": "Свитшот базовый однотонный без начеса",
+        "color": "Белый",
+        "link": "https://www.wildberries.ru/catalog/208982848/detail.aspx"
+      },
+      {
+        "name": "Свитшот базовый однотонный без начеса",
+        "color": "Бежевый",
+        "link": "https://www.wildberries.ru/catalog/208982849/detail.aspx"
+      },
+      {
+        "name": "Свитшот базовый однотонный без начеса",
+        "color": "Черный",
+        "link": "https://www.wildberries.ru/catalog/208982851/detail.aspx"
+      },
+      {
+        "name": "Свитшот базовый однотонный без начеса",
+        "color": "Серый",
+        "link": "https://www.wildberries.ru/catalog/208982850/detail.aspx"
+      }
+    ]
+  }
+}
