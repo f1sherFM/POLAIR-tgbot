@@ -28,7 +28,7 @@ logger = logging.getLogger(__name__)
 
 # Конфигурация бота
 TOKEN = "7382727613:AAG7_S2GFaNIv6czqj6vJrS1EGVsSFS0WkM"
-ADMIN_ID = "@f1sherFM"  # Обязательно с @ в начале для username
+ADMIN_ID = "@Soffya82"  # Обязательно с @ в начале для username
 CATALOG_FILE = "catalog.json"  # Файл для хранения каталога
 
 # Проверка формата ADMIN_ID
