@@ -11,6 +11,11 @@ from telegram.ext import (
     filters
 )
 import psycopg2
+from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, MessageHandler, filters
+from telegram import Update
+
+WEBHOOK_URL = "https://polair-tgbot.onrender.com"  # Замените на ваш URL
+PORT = int(os.environ.get('PORT', 8443))
 
 # Настройка логирования
 logging.basicConfig(
