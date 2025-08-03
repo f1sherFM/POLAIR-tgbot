@@ -14,6 +14,7 @@ import psycopg2
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, MessageHandler, filters
 from telegram import Update
 from http.server import BaseHTTPRequestHandler, HTTPServer
+import threading
 
 WEBHOOK_URL = "https://polair-tgbot.onrender.com"  # Замените на ваш URL
 PORT = int(os.environ.get('PORT', 8443))
@@ -713,15 +714,16 @@ def main():
     application.add_handler(MessageHandler(filters.ALL & ~filters.COMMAND, send_welcome))
     application.add_error_handler(error_handler)
     
-    application.run_polling()
-
-if __name__ == "__main__":
-    import threading
+    # Запускаем health check в отдельном потоке
     threading.Thread(target=run_health_check, daemon=True).start()
-    main()  # Запуск бота
+    
+    # Запускаем бота с обработкой KeyboardInterrupt
     try:
-        main()
+        application.run_polling()
     except KeyboardInterrupt:
         logger.info("Бот остановлен")
     finally:
         db.close()
+
+if __name__ == "__main__":
+    main()
