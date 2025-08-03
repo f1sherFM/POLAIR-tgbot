@@ -13,6 +13,7 @@ from telegram.ext import (
 import psycopg2
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, MessageHandler, filters
 from telegram import Update
+from http.server import BaseHTTPRequestHandler, HTTPServer
 
 WEBHOOK_URL = "https://polair-tgbot.onrender.com"  # Замените на ваш URL
 PORT = int(os.environ.get('PORT', 8443))
@@ -683,6 +684,16 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def error_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обработчик ошибок"""
     logger.error(f"Ошибка при обработке сообщения: {context.error}")
+    
+class HealthCheckHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"OK")
+
+def run_health_check():
+    server = HTTPServer(('0.0.0.0', 8443), HealthCheckHandler)
+    server.serve_forever()
 
 def main():
     """Запуск бота"""
@@ -697,6 +708,9 @@ def main():
     application.run_polling()
 
 if __name__ == "__main__":
+    import threading
+    threading.Thread(target=run_health_check, daemon=True).start()
+    main()  # Запуск бота
     try:
         main()
     except KeyboardInterrupt:
