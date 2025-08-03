@@ -460,11 +460,16 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
             if season['items']:
                 keyboard = []
                 for item in season['items']:
-                    if item.get('link'):
-                        button_text = item['name']
-                        if item.get('color'):
-                            button_text += f" ({item['color']})"
+                    button_text = item['name']
+                    if item.get('color'):
+                        button_text += f" ({item['color']})"
+                    
+                    # Если есть ссылка и она не '-', делаем URL кнопку
+                    if item.get('link') and item['link'] != '-':
                         keyboard.append([InlineKeyboardButton(button_text, url=item['link'])])
+                    else:
+                        # Иначе делаем обычную кнопку с текстом
+                        keyboard.append([InlineKeyboardButton(button_text, callback_data='no_link')])
                 
                 if keyboard:
                     keyboard.append([InlineKeyboardButton("Назад", callback_data='catalog')])
@@ -483,6 +488,9 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     text=f"Товары для сезона {season['name']} временно отсутствуют.",
                     reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Назад", callback_data='catalog')]])
                 )
+
+        elif query.data == 'no_link':
+            await query.answer("ℹ️ Ссылка на этот товар не указана", show_alert=True)
                 
         elif query.data == 'back':
             await start(update, context)
