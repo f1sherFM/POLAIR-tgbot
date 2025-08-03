@@ -296,9 +296,9 @@ class Database:
         try:
             self.conn = psycopg2.connect(
                 dbname="polair_bot",
-                user="postgres",
-                password="1234",
-                host="localhost",
+                user="polair_bot_user",
+                password="XLPCNXclJyZsOYUdgWVOAoNHDINgPqmN",
+                host="dpg-d27ic015pdvs73flabq0-a.oregon-postgres.render.com",
                 port="5432"
             )
             logger.info("Успешное подключение к базе данных")
